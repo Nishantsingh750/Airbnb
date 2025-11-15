@@ -1,0 +1,94 @@
+<header class="bg-red-500 text-white shadow-md sticky top-0 z-10">
+  <nav class="container mx-auto flex justify-between items-center py-3 px-4">
+    <!-- Logo -->
+    <a
+      href="/"
+      class="flex items-center text-lg font-bold hover:text-red-100 transition"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        class="w-6 h-6 mr-1"
+      >
+        <path
+          d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"
+        />
+        <path
+          d="M12 5.432l8.159 8.159v6.198a1.875 1.875 0 01-1.875 1.875H15v-4.5h-6V21H5.625A1.875 1.875 0 013.75 19.59v-6.198L12 5.43z"
+        />
+      </svg>
+      Airbnb
+    </a>
+
+    <!-- Links -->
+    <ul class="flex gap-8 justify-between items-center">
+      <% if (isLoggedIn && user) { %> <% if (user.userType==='guest' ) { %>
+      <li>
+        <a
+          href="/homes"
+          class="<%= currentPage === 'homes' ? 'bg-red-600' : 'hover:bg-red-400' %> px-3 py-2 rounded-lg transition"
+          >Homes</a
+        >
+      </li>
+      <li>
+        <a
+          href="/favourites"
+          class="<%= currentPage === 'favourites' ? 'bg-red-600' : 'hover:bg-red-400' %> px-3 py-2 rounded-lg transition"
+          >Favourites</a
+        >
+      </li>
+      <li>
+        <a
+          href="/bookings"
+          class="<%= currentPage === 'bookings' ? 'bg-red-600' : 'hover:bg-red-400' %> px-3 py-2 rounded-lg transition"
+          >Bookings</a
+        >
+      </li>
+      <% } else { %>
+      <li>
+        <a
+          href="/host/host-home-list"
+          class="<%= currentPage === 'host-homes' ? 'bg-red-600' : 'hover:bg-red-400' %> px-3 py-2 rounded-lg transition"
+          >Host Homes</a
+        >
+      </li>
+      <li>
+        <a
+          href="/host/add-home"
+          class="<%= currentPage === 'addHome' ? 'bg-red-600' : 'hover:bg-red-400' %> px-3 py-2 rounded-lg transition"
+        >
+          Add Home
+        </a>
+      </li>
+
+      <% } %>
+      <li>
+        <form action="/logout" method="GET">
+          <button
+            type="submit"
+            class="px-3 py-2 rounded-lg border border-white hover:bg-red-400 transition"
+          >
+            Logout
+          </button>
+        </form>
+      </li>
+      <% } else { %>
+      <li>
+        <a
+          href="/signup"
+          class="<%= currentPage === 'signup' ? 'bg-red-600' : 'hover:bg-red-400' %> px-6 py-2 rounded-lg transition border border-white"
+          >Sign Up</a
+        >
+      </li>
+      <li>
+        <a
+          href="/login"
+          class="<%= currentPage === 'login' ? 'bg-white text-red-500' : 'bg-white text-red-500 hover:bg-red-50' %> px-6 py-2 rounded-lg transition"
+          >Login</a
+        >
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
